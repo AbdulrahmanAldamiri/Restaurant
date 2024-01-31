@@ -1,0 +1,56 @@
+﻿@model Restaurant.ViewModels.MasterCustomerReviewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<hr />
+<div class="pagetitle">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Admin/MasterCustomerReview">MasterCustomerReview</a></li>
+            <li class="breadcrumb-item active">Create</li>
+        </ol>
+    </nav>
+</div>
+<hr />
+<div class="row">
+    <div class="col-lg-6">
+
+        <div class="card">
+            <div class="card-body">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="MasterCustomerReviewName" class="control-label"></label>
+                <input asp-for="MasterCustomerReviewName" class="form-control" />
+                <span asp-validation-for="MasterCustomerReviewName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterCustomerReviewMessage" class="control-label"></label>
+                <input asp-for="MasterCustomerReviewMessage" class="form-control" />
+                <span asp-validation-for="MasterCustomerReviewMessage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="File" class="control-label"></label>
+                <input asp-for="File" class="form-control" />
+                <span asp-validation-for="File" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div></div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

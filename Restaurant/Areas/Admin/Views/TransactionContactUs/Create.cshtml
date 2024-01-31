@@ -1,0 +1,62 @@
+﻿@model Restaurant.Models.TransactionContactUs
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="pagetitle">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Admin/TransactionContactUs">TransactionContactUs</a></li>
+            <li class="breadcrumb-item active">Create</li>
+        </ol>
+    </nav>
+</div>
+<hr />
+<div class="row">
+    <div class="col-lg-6">
+
+        <div class="card">
+            <div class="card-body">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TransactionContactUsFullName" class="control-label"></label>
+                <input asp-for="TransactionContactUsFullName" class="form-control" />
+                <span asp-validation-for="TransactionContactUsFullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransactionContactUsEmail" class="control-label"></label>
+                <input asp-for="TransactionContactUsEmail" class="form-control" />
+                <span asp-validation-for="TransactionContactUsEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransactionContactUsSubject" class="control-label"></label>
+                <input asp-for="TransactionContactUsSubject" class="form-control" />
+                <span asp-validation-for="TransactionContactUsSubject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TransactionContactUsMessage" class="control-label"></label>
+                <input asp-for="TransactionContactUsMessage" class="form-control" />
+                <span asp-validation-for="TransactionContactUsMessage" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

@@ -1,0 +1,68 @@
+﻿@model Restaurant.Models.MasterService
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="pagetitle">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Admin/MasterService">MasterService</a></li>
+            <li class="breadcrumb-item active">Edit</li>
+        </ol>
+    </nav>
+</div>
+<hr />
+<div class="row">
+    <div class="col-lg-6">
+
+        <div class="card">
+            <div class="card-body">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MasterServiceId" />
+            <div class="form-group">
+                <label asp-for="MasterServiceTitle" class="control-label"></label>
+                <input asp-for="MasterServiceTitle" class="form-control" />
+                <span asp-validation-for="MasterServiceTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterServiceDesc" class="control-label"></label>
+                <input asp-for="MasterServiceDesc" class="form-control" />
+                <span asp-validation-for="MasterServiceDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MasterServiceImage" class="control-label"></label>
+                <input asp-for="MasterServiceImage" class="form-control" />
+                <span asp-validation-for="MasterServiceImage" class="text-danger"></span>
+                        
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="CreateDate" class="control-label"></label>
+                <input asp-for="CreateDate" class="form-control" />
+                <span asp-validation-for="CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="CreateUser" class="control-label"></label>
+                <input asp-for="CreateUser" class="form-control" />
+                <span asp-validation-for="CreateUser" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

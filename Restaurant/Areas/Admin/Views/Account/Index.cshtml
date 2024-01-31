@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="pagetitle">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Admin/Account">Account</a></li>
+            <li class="breadcrumb-item active">Index</li>
+        </ol>
+    </nav>
+</div>
+
+<p>
+    <a asp-action="Register">Create New</a>
+</p>
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="cardbody">
+                <table class="table datatable">
+                    <thead>
+                        <tr>
+                            <th>
+                                User Name
+                            </th>
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Email
+                                </td>
+                                <td>
+                                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pencil" style="font-size:20px;color:saddlebrown"></i></a> |
+                                    <a class="btnDelete" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                       data-path="@Url.ActionLink("Delete","Account",new{Id=item.Id})"><i class="fa-regular fa-circle-xmark" style="font-size:20px;color:red"></i></a>
+
+
+                                </td>
+
+                            </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm Deletion</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <input type="button" class="btn btn-primary" id="btnConfirmDelete" value="Delete" />
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/assets/js/vendor/jquery-v1.12.4.min.js"></script>
+<script>
+
+
+
+    var urlPathDelete = "";
+    $(function () {
+        $(".btnDelete").click(function () {
+            //alert($(this).data("path"))
+            urlPathDelete = $(this).data("path");
+            console.log(urlPathDelete)
+        })
+
+
+        $("#btnConfirmDelete").click(function () {
+
+            window.location = urlPathDelete;
+        })
+
+    });
+
+</script>

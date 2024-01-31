@@ -1,0 +1,125 @@
+﻿@model Restaurant.ViewModels.SystemSettingModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="pagetitle">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Admin/SystemSetting">SystemSetting</a></li>
+            <li class="breadcrumb-item active">Edit</li>
+        </ol>
+    </nav>
+</div>
+<hr />
+<div class="row">
+    <div class="col-lg-6">
+
+        <div class="card">
+            <div class="card-body">
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="SystemSettingId" />
+            <div class="form-group" hidden>
+                <label asp-for="SystemSettingLogoImageUrl" class="control-label"></label>
+                <input asp-for="SystemSettingLogoImageUrl" class="form-control" />
+                <span asp-validation-for="SystemSettingLogoImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="SystemSettingLogoImageUrl2" class="control-label"></label>
+                <input asp-for="SystemSettingLogoImageUrl2" class="form-control" />
+                <span asp-validation-for="SystemSettingLogoImageUrl2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="File1" class="control-label"></label>
+                <input asp-for="File1" class="form-control" />
+                <span asp-validation-for="File1" class="text-danger"></span>
+                        <img src="~/images/@Model.SystemSettingLogoImageUrl" style="max-width:100px" />
+            </div>
+            <div class="form-group">
+                <label asp-for="File2" class="control-label"></label>
+                <input asp-for="File2" class="form-control" />
+                        <span asp-validation-for="File2" class="text-danger"></span>
+                        <img src="~/images/@Model.SystemSettingLogoImageUrl2" style="max-width:100px" />
+            </div>
+            <div class="form-group">
+                <label asp-for="SystemSettingCopyright" class="control-label"></label>
+                <input asp-for="SystemSettingCopyright" class="form-control" />
+                <span asp-validation-for="SystemSettingCopyright" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SystemSettingWelcomeNoteTitle" class="control-label"></label>
+                <input asp-for="SystemSettingWelcomeNoteTitle" class="form-control" />
+                <span asp-validation-for="SystemSettingWelcomeNoteTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SystemSettingWelcomeNoteBreef" class="control-label"></label>
+                <input asp-for="SystemSettingWelcomeNoteBreef" class="form-control" />
+                <span asp-validation-for="SystemSettingWelcomeNoteBreef" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SystemSettingWelcomeNoteDesc" class="control-label"></label>
+                <input asp-for="SystemSettingWelcomeNoteDesc" class="form-control" />
+                <span asp-validation-for="SystemSettingWelcomeNoteDesc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SystemSettingWelcomeNoteUrl" class="control-label"></label>
+                <input asp-for="SystemSettingWelcomeNoteUrl" class="form-control" />
+                <span asp-validation-for="SystemSettingWelcomeNoteUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="SystemSettingWelcomeNoteImageUrl" class="control-label"></label>
+                <input asp-for="SystemSettingWelcomeNoteImageUrl" class="form-control" />
+                <span asp-validation-for="SystemSettingWelcomeNoteImageUrl" class="text-danger"></span>
+            </div>
+                    <div class="form-group">
+                        <label asp-for="File3" class="control-label"></label>
+                        <input asp-for="File3" class="form-control" />
+                        <span asp-validation-for="File3" class="text-danger"></span>
+                        <img src="~/images/@Model.SystemSettingWelcomeNoteImageUrl" style="max-width:100px" />
+                    </div>
+            <div class="form-group">
+                <label asp-for="SystemSettingMapLocation" class="control-label"></label>
+                <input asp-for="SystemSettingMapLocation" class="form-control" />
+                <span asp-validation-for="SystemSettingMapLocation" class="text-danger"></span>
+            </div>
+                    <div class="form-group">
+                        <label asp-for="SystemSettingPhoneNumber" class="control-label"></label>
+                        <input asp-for="SystemSettingPhoneNumber" class="form-control" />
+                        <span asp-validation-for="SystemSettingPhoneNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SystemSettingEmail" class="control-label"></label>
+                        <input asp-for="SystemSettingEmail" class="form-control" />
+                        <span asp-validation-for="SystemSettingEmail" class="text-danger"></span>
+                    </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="CreateUser" class="control-label"></label>
+                <input asp-for="CreateUser" class="form-control" />
+                <span asp-validation-for="CreateUser" class="text-danger"></span>
+            </div>
+            <div class="form-group" hidden>
+                <label asp-for="CreateDate" class="control-label"></label>
+                <input asp-for="CreateDate" class="form-control" />
+                <span asp-validation-for="CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

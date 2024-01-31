@@ -1,0 +1,110 @@
+﻿@model IEnumerable<Restaurant.Models.TransactionNewsletter>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<<div class="pagetitle">
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/Admin/Home">Home</a></li>
+            <li class="breadcrumb-item"><a href="/Admin/TransactionNewsletter">TransactionNewsletter</a></li>
+            <li class="breadcrumb-item active">Index</li>
+        </ol>
+    </nav>
+</div>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="cardbody">
+                <table id="DeleteFix" class="table datatable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TransactionNewsletterEmail)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TransactionNewsletterEmail)
+            </td>
+            <td>
+                                    <a asp-action="Edit" asp-route-id="@item.TransactionNewsletterId"><i class="fa-solid fa-pencil" style="font-size:20px;color:saddlebrown"></i></a> |
+                                    <a asp-action="ToggleActive" asp-route-id="@item.TransactionNewsletterId">
+                                        @if (item.IsActive == true)
+                                        {
+                                            <i class="fa-solid fa-eye" style="font-size:20px;"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fa-sharp fa-solid fa-eye-slash" style="color:red;font-size:20px;"></i>
+                                        }
+                                    </a> |
+                                    <a class="btnDelete" href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                       data-path="@Url.ActionLink("Index","TransactionNewsletter",new{DeleteId=item.TransactionNewsletterId})"> <i class="fa-regular fa-circle-xmark" style="font-size:20px;color:red"></i> </a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm Deletion</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <input type="button" class="btn btn-primary" id="btnConfirmDelete" value="Delete" />
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/assets/js/vendor/jquery-v1.12.4.min.js"></script>
+<script>
+
+
+
+
+
+
+    var urlPathDelete = "";
+    $(function () {
+        //$(".btnDelete").click(function () {
+        //    //alert($(this).data("path"))
+        //    urlPathDelete = $(this).data("path");
+        //    console.log(urlPathDelete)
+        //})
+        $("#DeleteFix tbody").on("click", ".btnDelete", function () {
+            urlPathDelete = $(this).data("path");
+            //console.log(urlPathDelete);
+        });
+
+
+        $("#btnConfirmDelete").click(function () {
+
+            window.location = urlPathDelete;
+        })
+
+    });
+
+
+</script>
